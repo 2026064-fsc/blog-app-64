@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記事詳細</title>
+</head>
+
+<body>
+    <div th:replace="~{fragments/layout :: hedder}"></div>
+
+    <!-- <main th:if="${blogs != null}"> -->
+        <h1 th:text="${blog.title}">記事のタイトル</h1>
+        <div class="article-date" th:text="'投稿日: ' + ${#temporals.format(article.createdAt, 'yyyy年MM月dd日 HH:mm')}">
+            2026/01/01</div>
+
+        <div class="blog-body" th:text="${blog.content}">記事の本文が表示される</div>
+        <!-- <a th:href="@{/blogs/{id}(id=${blog.id})}">詳細ページ</a> -->
+
+    <!-- </main> -->
+
+    <a href="@{/blogs}">➔ 一覧に戻る</a>
+</body>
+
+</html>

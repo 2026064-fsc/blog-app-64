@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="ja" >
+<html lang="ja" xmlns="http:www.thymeleaf.org">
+                <!-- th: を未知の属性として警告しないようにするための宣言で、Thymeleaf の処理自体には影響しない -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <title>All blogs</title>
 </head>
+
 <body>
+    <div th:replace="~{fragments/layout :: header}"></div>
     <h1>Spring</h1>
+    
+    <ul>
+        <h1>ブログ一覧</h1>
+        <li th:each="blog : ${blogs}">
+            <a th:href="@{/blogs/{id}(id=${blog.id})}" th:text="${blog.title}">ブログ名</a>
+            <p th:text="${blog.content}">本文</p>
+            
+        </li>
+    </ul>
+
 </body>
+
 </html>
