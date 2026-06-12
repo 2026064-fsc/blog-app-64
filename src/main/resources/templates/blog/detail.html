@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head >
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>記事詳細</title>
 </head>
-
 <body>
-    <div th:replace="~{fragments/layout :: hedder}"></div>
+    <div th:replace="~{fragments/layout :: header}"></div>
 
-    <!-- <main th:if="${blogs != null}"> -->
-        <h1 th:text="${blog.title}">記事のタイトル</h1>
-        <div class="article-date" th:text="'投稿日: ' + ${#temporals.format(article.createdAt, 'yyyy年MM月dd日 HH:mm')}">
-            2026/01/01</div>
+    <div class="container">
+        <div class="blog-group">
+            <h1 th:text="${blog.title}">記事のタイトル</h1>
 
-        <div class="blog-body" th:text="${blog.content}">記事の本文が表示される</div>
-        <!-- <a th:href="@{/blogs/{id}(id=${blog.id})}">詳細ページ</a> -->
+            <!-- <div class="blog-card-meta" th:if="${blog.createdAt != null}"
+                th:text="'投稿日: ' + ${#temporals.format(blog.createdAt, 'yyyy年MM月dd日 HH:mm')}">
+                2026/01/01 12:00
+            </div> -->
 
-    <!-- </main> -->
-
-    <a href="@{/blogs}">➔ 一覧に戻る</a>
+            <p class="blog-summary" th:text="${blog.content}">記事の本文が表示される</p>
+            
+            <div style="margin-top: 20px;">
+                <a th:href="@{/blogs}" class="btn-cancel" style="margin-left: 0;">一覧に戻る</a>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>

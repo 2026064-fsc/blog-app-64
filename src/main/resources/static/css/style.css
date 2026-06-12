@@ -1,0 +1,124 @@
+/* ==========================================================================
+   全体レイアウト
+   ========================================================================== */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* カードを引き立てる薄い背景 */
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   共通ヘッダー（左・中・右の3分割配置）
+   ========================================================================== */
+.common-header {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 中央：検索バー */
+.header-search .search-form {
+    display: flex;
+    gap: 5px;
+}
+
+.header-search input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 右側：ボタンを縦に並べる核心部分 */
+.header-actions {
+    display: flex;
+    flex-direction: column; /* 縦並び */
+    gap: 5px;
+    align-items: flex-end;  /* 右寄せ */
+}
+
+.btn-nav {
+    text-decoration: none;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-align: center;
+    min-width: 70px;
+    border: 1px solid #333;
+    color: #333;
+    background-color: #fff;
+}
+
+/* ==========================================================================
+   ブログ共通：1つの記事の「グループ化（枠で囲う）」
+   ========================================================================== */
+.blog-group {
+    background-color: #ffffff;
+    border: 1px solid #ddd; /* 1つのグループの境界線 */
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.blog-title, .blog-title a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.3em;
+    margin: 0 0 10px 0;
+}
+
+.blog-card-meta {
+    font-size: 12px;
+    color: #666;
+    margin: 5px 0 10px 0;
+}
+
+.blog-summary {
+    font-size: 14px;
+    color: #444;
+    margin: 0;
+}
+
+/* ==========================================================================
+   新規投稿画面用のフォーム調整
+   ========================================================================== */
+.form-group {
+    margin-bottom: 15px;
+}
+.form-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* 横幅いっぱいにするための設定 */
+}
+.form-actions {
+    margin-top: 15px;
+}
+.btn-submit {
+    padding: 6px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-cancel {
+    margin-left: 10px;
+    color: #666;
+    text-decoration: none;
+}

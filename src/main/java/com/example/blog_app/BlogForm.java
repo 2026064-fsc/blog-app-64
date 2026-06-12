@@ -1,42 +1,35 @@
-//リストの要素となるクラスを作成
 package com.example.blog_app;
 
-
-public class Blog {
-    private Long id;
+public class BlogForm {
     private String title;
     private String content;
     private String userName;
     private Integer created_at;
 
-    public Blog(Long id,String title,String content, String userName, Integer created_at) {
-        this.id = id;
+    public BlogForm(String title, String content, String userName, Integer created_at) {
         this.title = title;
         this.content = content;
         this.userName = userName;
         this.created_at = created_at;
     }
-    //getter
-    public Long getId() {
-        return id;
-    }
+
+    // getter
     public String getTitle() {
         return title;
     }
+
     public String getContent() {
         return content;
     }
+
     public String getUserName() {
         return userName;
     }
+
     public Integer getCreated_at() {
         return created_at;
     }
-   
-    //setter
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // setter
     public void setTitle(String title) {
         this.title = title;
     }
@@ -50,4 +43,3 @@ public class Blog {
         this.created_at = created_at;
     }
 }
-

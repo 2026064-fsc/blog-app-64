@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <title th:text="${title}">タイトル</title>
+</head>
+<body>
+  <header th:fragment="header" class="common-header">
+
+    <div class="header-search">
+      <form th:action="@{/blogs}" method="get" class="search-form">
+        <input type="text" name="keyword" placeholder="ブログのタイトルを検索" th:value="${param.keyword}">
+        <button type="submit">検索</button>
+      </form>
+    </div>
+
+    <div class="header-actions"> 
+      <a th:href="@{/blogs}" class="btn-nav">ホーム</a>
+      <a th:href="@{/blog/new}" class="btn-nav">投稿する</a>
+    </div>
+  </header>
+</body>
+</html>

@@ -18,14 +18,14 @@ public class BlogRepository {
 
     // データベースからブログ一覧をとってくる
     public List<Blog> findAll() {
-        return jdbcClient.sql("SELECT id,title,content,userName,created_at,updated_at FROM blogs")
+        return jdbcClient.sql("SELECT id,title,content,userName,created_at FROM blogs")
                 .query(Blog.class)
                 .list();
     }
 
-    // DBから記事を一件ずつとってくる
+    // DBから記事を一件ずつとってくる（0件か１件かが決まらないためOptionalを使う）
     public Optional<Blog> findById(Long id) {
-        return jdbcClient.sql("SELECT id,title,content,userName,created_at,updated_at FROM blogs WHERE id = :id")
+        return jdbcClient.sql("SELECT id,title,content,userName,created_at FROM blogs WHERE id = :id")
                 .param("id", id)
                 .query(Blog.class)
                 .optional();
@@ -33,13 +33,12 @@ public class BlogRepository {
 
     // 新しい記事を投稿する
     public void save(Blog blog) {
-        jdbcClient.sql("INSERT INTO blogs(id,title,content,userName,created_at,updated_at) VALUES ")
-                .param("id", blog.getId())
+        //Idは入れない
+        jdbcClient.sql("INSERT INTO blogs (title,content,userName,created_at) VALUES (:title,:content,:userName,:created_at) ")
                 .param("title", blog.getTitle())
                 .param("content", blog.getContent())
                 .param("userName", blog.getUserName())
                 .param("created_at", blog.getCreated_at())
-                .param("updated_at", blog.getUpdated_at())
                 .update();
     // }
     // //発展１　idでタスクを削除するメソッド
@@ -51,7 +50,7 @@ public class BlogRepository {
 
     // // 発展２　記事のタイトルをキーワードで検索
     // public List<Blog> searchByTitle(String keyword) {
-    //     return jdbcClient.sql("SELECT id,title,content,userName,created_at,updated_at FROM blogs WHERE title LIKE :keyword")
+    //     return jdbcClient.sql("SELECT id,title,content,userName,created_at FROM blogs WHERE title LIKE :keyword")
     //             .param("keyword", "%" + keyword + "%")
     //             .query(Blog.class)
     //             .list();
